@@ -7,6 +7,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
-    respond_with resource.attributes.slice('email', 'authentication_token', 'name').to_json, location: after_sign_in_path_for(resource)
+
+    respond_with resource.attributes.slice('email', 'authentication_token').to_json, location: after_sign_in_path_for(resource)
   end
 end

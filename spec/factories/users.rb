@@ -36,5 +36,7 @@ FactoryBot.define do
     country_document { User::COUNTRIES.sample }
     document_type { User::DOCUMENT_TYPE.sample }
     document_number { generate :document_number }
+    password { 'password' }
+    password_confirmation { 'password' }
   end
 end
