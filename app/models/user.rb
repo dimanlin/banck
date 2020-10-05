@@ -3,9 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  COUNTRIES = [ :russia, :iran ]
-  # enum nationality: [ :russia, :iran ]
-  # enum country: COUNTRIES
-  # enum country_document: COUNTRIES
-  # enum document_type: [:passport, :"driver's license"]
+
+  COUNTRIES = %w('Russia', 'Iran')
+  DOCUMENT_TYPE = %w('Pasport', "Driver's license")
 end

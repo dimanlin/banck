@@ -4,15 +4,15 @@ class AddRegColumnsToUser < ActiveRecord::Migration[6.0]
       t.boolean :aml_rules
       t.string :first_name
       t.string :last_name
-      t.string :phonenumber
+      t.string :phone_number
       t.date :dob
       t.integer :sms_code
-      t.integer :country, default: 0
-      t.integer :nationality, default: 0
+      t.integer :country
+      t.integer :nationality
       t.integer :postal_code
-      t.integer :country_document, default: 0
-      t.string :document_type, default: 0
-      t.string :document_number, :string
+      t.integer :country_document
+      t.string :document_type
+      t.string :document_number
       t.date :issued_at
     end
   end

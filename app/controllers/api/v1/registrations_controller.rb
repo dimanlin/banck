@@ -5,7 +5,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
     resource.save
     yield resource if block_given?
-    # byebug
+
     if resource.persisted?
       if resource.active_for_authentication?
         render json: resource

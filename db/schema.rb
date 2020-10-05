@@ -16,16 +16,15 @@ ActiveRecord::Schema.define(version: 2020_10_05_100740) do
     t.boolean "aml_rules"
     t.string "first_name"
     t.string "last_name"
-    t.string "phonenumber"
+    t.string "phone_number"
     t.date "dob"
     t.integer "sms_code"
-    t.integer "country", default: 0
-    t.integer "nationality", default: 0
+    t.integer "country"
+    t.integer "nationality"
     t.integer "postal_code"
-    t.integer "country_document", default: 0
-    t.string "document_type", default: "0"
+    t.integer "country_document"
+    t.string "document_type"
     t.string "document_number"
-    t.string "string"
     t.date "issued_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
