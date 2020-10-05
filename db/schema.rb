@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_111637) do
+ActiveRecord::Schema.define(version: 2020_10_05_125423) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "city"
+    t.string "country"
+    t.string "address"
+    t.integer "postal_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "country"
+    t.integer "document_type"
+    t.date "issued_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.boolean "aml_rules"
@@ -19,13 +38,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_111637) do
     t.string "phone_number"
     t.date "dob"
     t.integer "sms_code"
-    t.integer "country"
     t.integer "nationality"
-    t.integer "postal_code"
-    t.integer "country_document"
-    t.string "document_type"
     t.string "document_number"
-    t.date "issued_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
