@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user, controllers: { registrations: 'registrations' }
+  devise_for :user, controllers: { confirmations: 'confirmations' }
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do

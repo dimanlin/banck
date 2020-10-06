@@ -22,6 +22,7 @@ Cities.data_path = 'lib/cities'
 
 module Banck
   class Application < Rails::Application
+    config.application = config_for(:application)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

@@ -6,6 +6,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  COUNTRIES = %w('Russia', 'Iran')
-  DOCUMENT_TYPE = %w('Pasport', "Driver's license")
+  has_one :contact_information
+  has_one :address
+  has_one :document
+
+  def has_contact_information?
+    contact_information.present?
+  end
+
+  def has_address?
+    address.present?
+  end
+
+  def has_document?
+    document.present?
+  end
+
 end

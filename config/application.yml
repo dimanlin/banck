@@ -1,0 +1,6 @@
+production:
+  frontend: http://localhost:8080
+development:
+  frontend: http://localhost:8080
+test:
+  frontend: http://localhost:8080

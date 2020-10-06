@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_141735) do
+ActiveRecord::Schema.define(version: 2020_10_06_052919) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2020_10_05_141735) do
     t.string "country"
     t.string "address"
     t.integer "postal_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contact_informations", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "dob"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,10 +43,6 @@ ActiveRecord::Schema.define(version: 2020_10_05_141735) do
 
   create_table "users", force: :cascade do |t|
     t.boolean "aml_rules"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.date "dob"
     t.integer "sms_code"
     t.integer "nationality"
     t.string "document_number"
