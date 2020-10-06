@@ -26,15 +26,7 @@ FactoryBot.define do
   factory :user do
     email { generate :email }
     aml_rules { true }
-    first_name { generate :first_name }
-    last_name { generate :last_name }
-    phone_number { generate :phone_number }
-    dob { 27.years.ago }
-    country { User::COUNTRIES.sample }
-    nationality { User::COUNTRIES.sample }
-    postal_code { generate :postal_code }
-    country_document { User::COUNTRIES.sample }
-    document_type { User::DOCUMENT_TYPE.sample }
+    nationality { ISO3166::Country.all_translated('EN').sample }
     document_number { generate :document_number }
     password { 'password' }
     password_confirmation { 'password' }

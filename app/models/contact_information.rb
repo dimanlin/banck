@@ -3,7 +3,7 @@ class ContactInformation < ApplicationRecord
 
   validates :first_name, :last_name, :phone_number, :dob, presence: true
 
-  validate age_check
+  validate :age_check
 
   def age_check
     if 18.years.ago < dob

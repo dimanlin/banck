@@ -7,6 +7,12 @@ Rails.application.routes.draw do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
       end
+
+      resources :countries, only: :index do
+        collection do
+          get :get_sities
+        end
+      end
     end
   end
 end

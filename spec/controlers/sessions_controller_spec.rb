@@ -10,8 +10,8 @@ describe Api::V1::SessionsController, type: :controller do
       let(:passwords) { { password: 'root0000', password_confirmation: 'root0000' } }
       let(:user) { FactoryBot.create(:user, passwords) }
       it 'return token' do
-        pattern = { email: user.email,
-                    authentication_token: user.authentication_token }
+        user.confirm
+        pattern = { authentication_token: user.authentication_token }
 
         post :create, params: { user: { email: user.email }.merge(passwords) }, format: :json
         expect(response.body).to match_json_expression(pattern)
