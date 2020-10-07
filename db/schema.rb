@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_190424) do
+ActiveRecord::Schema.define(version: 2020_10_07_141108) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_190424) do
   create_table "users", force: :cascade do |t|
     t.boolean "aml_rules"
     t.integer "sms_code"
-    t.integer "nationality"
+    t.string "nationality"
     t.string "document_number"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

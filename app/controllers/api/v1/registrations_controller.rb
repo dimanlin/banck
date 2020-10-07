@@ -4,7 +4,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.save
-    byebug
+
     yield resource if block_given?
 
     if resource.persisted?
@@ -21,7 +21,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :nationality, :country)
   end
 
   def ensure_params_exist
