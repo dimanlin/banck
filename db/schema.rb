@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_052919) do
+ActiveRecord::Schema.define(version: 2020_10_06_190424) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_052919) do
     t.string "confirmed_at"
     t.string "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "country"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

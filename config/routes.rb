@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
+        post "resend_invitation", to: "confirmations#create"
       end
 
       resources :countries, only: :index do

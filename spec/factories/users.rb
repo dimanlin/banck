@@ -30,5 +30,8 @@ FactoryBot.define do
     document_number { generate :document_number }
     password { 'password' }
     password_confirmation { 'password' }
+    country { ISO3166::Country.all_translated('EN').sample }
+
+
   end
 end
