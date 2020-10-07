@@ -4,15 +4,11 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.save
-
+    # byebug
     yield resource if block_given?
-
+    # byebug
     if resource.persisted?
-      if resource.active_for_authentication?
-        render json: resource
-      else
-        render json: resource.errors.messages, status: :unprocessable_entity
-      end
+      render json: resource
     else
       render json: resource.errors.messages, status: :unprocessable_entity
     end
