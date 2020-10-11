@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         post "resend_invitation", to: "confirmations#create"
       end
 
+      resources :contact_informations, only: [:show, :update, :create]
       resources :countries, only: :index do
         collection do
           get :get_sities
