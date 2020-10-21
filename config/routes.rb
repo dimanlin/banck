@@ -7,10 +7,10 @@ Rails.application.routes.draw do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
         post "resend_invitation", to: "confirmations#create"
-        get "confirmation", to: "confirmations#show"
+        get "confirmation", to: "confirmations#show1"
       end
 
-      resources :contact_informations, only: [:show, :update, :create]
+      resources :contact_informations, only: [:show1, :update, :create]
 
       resources :users do
         collection do
