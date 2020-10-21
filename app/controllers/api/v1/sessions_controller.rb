@@ -2,7 +2,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   clear_respond_to
   respond_to :json
 
-  USER_SESSION_FIELDS = ['id', 'aml_rules', 'nationality', 'email', 'authentication_token', 'country'].freeze
+  USER_SESSION_FIELDS = ['authentication_token'].freeze
 
   def create
     self.resource = warden.authenticate!(auth_options)

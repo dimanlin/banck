@@ -4,6 +4,7 @@ describe Api::V1::ContactInformationsController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
   let(:contact_information) { FactoryBot.attributes_for(:contact_information) }
   let(:auth) { { user_email: user.email, user_token: user.authentication_token } }
+
   describe 'create' do
     it 'should return list of countries' do
       # request.headers.merge! 'X-User-Email' => user.email

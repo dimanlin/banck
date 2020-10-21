@@ -11,6 +11,13 @@ Rails.application.routes.draw do
       end
 
       resources :contact_informations, only: [:show, :update, :create]
+
+      resources :users do
+        collection do
+          get :info
+        end
+      end
+
       resources :countries, only: :index do
         collection do
           get :get_sities
