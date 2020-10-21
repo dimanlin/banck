@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_10_07_141108) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "city"
-    t.string "country"
-    t.string "address"
-    t.integer "postal_code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "contact_informations", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

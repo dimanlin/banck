@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user, controllers: { confirmations: 'confirmations' }
+  devise_for :user, controllers: { confirmations: 'api/v1/confirmations' }
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
         post "resend_invitation", to: "confirmations#create"
+        get "confirmation", to: "confirmations#show"
       end
 
       resources :contact_informations, only: [:show, :update, :create]
