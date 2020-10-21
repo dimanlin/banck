@@ -14,7 +14,6 @@ class Api::V1::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show
-    # byebug
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
     yield resource if block_given?
 
@@ -30,11 +29,10 @@ class Api::V1::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, resource)
-    byebug
     if signed_in?(resource_name)
       signed_in_root_path(resource)
     else
-      "#{Rails.configuration.application.frontend}/sign_in"
+      "#{Rails.configuration.application.frontend}/sign-in"
     end
   end
 
