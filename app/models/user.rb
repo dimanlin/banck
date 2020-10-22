@@ -24,9 +24,9 @@ class User < ApplicationRecord
     document.present?
   end
 
-  def update_token
-    update(authentication_token: Devise.friendly_token)
-  end
+  # def update_token
+  #   update(authentication_token: Devise.friendly_token)
+  # end
 
   private
 

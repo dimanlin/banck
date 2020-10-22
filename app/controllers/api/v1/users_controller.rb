@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def info
-    current_user.update_token
+    # current_user.update_token
   end
 
 end

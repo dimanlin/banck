@@ -2,7 +2,6 @@ class Api::V1::ContactInformationsController < ApplicationController
   acts_as_token_authentication_handler_for User
 
   def create
-    byebug
     ci = current_user.contact_information.create(contact_information_params)
     response json: ci, status: :ok
   end
@@ -23,6 +22,9 @@ class Api::V1::ContactInformationsController < ApplicationController
   private
 
   def contact_information_params
-    params.require(:contact_information).permit(:first_name, :last_name, :phone_number, :dob)
+    params.require(:contact_information).permit(:first_name,
+                                                :last_name,
+                                                :phone_number,
+                                                :dob)
   end
 end

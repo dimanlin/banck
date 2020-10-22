@@ -10,7 +10,6 @@ describe Api::V1::UsersController, type: :controller do
     user.confirm
     request.headers["X-User-Token"] = user.authentication_token
     request.headers["X-User-Email"] = user.email
-    request.headers['Content-Type'] = 'application/json'
   end
 
   describe 'info' do
