@@ -2,16 +2,21 @@ class Api::V1::ContactInformationsController < ApplicationController
   acts_as_token_authentication_handler_for User
 
   def create
-    ci = current_user.contact_information.create(contact_information_params)
-    response json: ci, status: :ok
+    ci = ContactInformation.new(contact_information_params.merge(user: current_user))
+
+    if ci.save
+      render json: ci, status: :ok
+    else
+      render json: ci.errors.messages, status: :unprocessable_entity
+    end
   end
 
   def update
     ci = current_user.contact_information.update(contact_information_params)
     if ci
-      response json: ci, status: :ok
+      render json: ci, status: :ok
     else
-      response json: ci.errors.messages, status: :unprocessable_entity
+      render json: ci.errors.messages, status: :unprocessable_entity
     end
   end
 
@@ -22,9 +27,10 @@ class Api::V1::ContactInformationsController < ApplicationController
   private
 
   def contact_information_params
-    params.require(:contact_information).permit(:first_name,
-                                                :last_name,
-                                                :phone_number,
-                                                :dob)
+    params.permit(:first_name,
+                        :last_name,
+                        :phone_number,
+                        :dial_code,
+                        :dob)
   end
 end

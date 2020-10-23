@@ -3,7 +3,7 @@ FactoryBot.define do
     first_name { "MyString" }
     last_name { "MyString" }
     phone_number { "MyString" }
-    dob { "2020-10-06" }
+    dob { 20.years.ago }
     user_id { 1 }
   end
 end
