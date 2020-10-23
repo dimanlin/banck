@@ -32,7 +32,7 @@ class Api::V1::ConfirmationsController < Devise::ConfirmationsController
     if signed_in?(resource_name)
       signed_in_root_path(resource)
     else
-      "#{Rails.configuration.application.frontend}/sign-in"
+      "#{Rails.configuration.application.frontend}/confirmrmation"
     end
   end
 
