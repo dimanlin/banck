@@ -31,5 +31,8 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     country { ISO3166::Country.all_translated('EN').sample }
+    after(:create) do |user|
+      user.contact_information ||= create(:contact_information, user: user)
+    end
   end
 end

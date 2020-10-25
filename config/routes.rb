@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :users do
         collection do
           get :info
+          post :confirm_phone_number
         end
       end
 

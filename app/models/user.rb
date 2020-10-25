@@ -12,6 +12,12 @@ class User < ApplicationRecord
   has_one :contact_information
   has_one :document
 
+  def confirm_phone_number(confirmation_number)
+    return true if contact_information.phone_confirm_at
+    return false if confirmation_number.to_i != contact_information.phone_code
+    contact_information.update(phone_confirm_at: DateTime.current)
+  end
+
   def has_contact_information?
     contact_information.present?
   end
@@ -23,10 +29,6 @@ class User < ApplicationRecord
   def has_document?
     document.present?
   end
-
-  # def update_token
-  #   update(authentication_token: Devise.friendly_token)
-  # end
 
   private
 

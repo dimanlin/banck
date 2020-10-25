@@ -25,4 +25,23 @@ describe Api::V1::UsersController, type: :controller do
       expect(response.body).to match_json_expression(pattern)
     end
   end
+
+  describe 'confirm_phone_number' do
+    let(:user) { FactoryBot.create(:user) }
+
+    it 'should return status :ok' do
+      phone_number_code = user.contact_information.phone_code
+
+      post :confirm_phone_number, params: { confirmation_code: phone_number_code }
+      expect(response).to be_ok
+    end
+
+    it 'should return status :unprocessable_entity' do
+      phone_number_code = '9283749' # Wrong number
+
+      post :confirm_phone_number, params: { confirmation_code: phone_number_code }
+      expect(response.status).to eq(422)
+    end
+
+  end
 end

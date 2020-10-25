@@ -4,6 +4,6 @@ FactoryBot.define do
     last_name { "MyString" }
     phone_number { "MyString" }
     dob { 20.years.ago }
-    user_id { 1 }
+    dial_code { '+1' }
   end
 end
