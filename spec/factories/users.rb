@@ -24,6 +24,10 @@ FactoryBot.define do
   end
 
   factory :user do
+    transient do
+      with_contact_information { false }
+    end
+
     email { generate :email }
     nationality { ISO3166::Country.all_translated('EN').sample }
     document_number { generate :document_number }
@@ -33,8 +37,10 @@ FactoryBot.define do
     over_18 { true }
     agree_with_terms { true }
     aml_rules { true }
-    # after(:create) do |user|
-    #   user.contact_information ||= create(:contact_information, user: user)
-    # end
+
+
+    after(:create) do |user, evaluator|
+      user.contact_information ||= create(:contact_information, user: user) if evaluator.with_contact_information
+    end
   end
 end

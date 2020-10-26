@@ -27,7 +27,7 @@ describe Api::V1::UsersController, type: :controller do
   end
 
   describe 'confirm_phone_number' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user, with_contact_information: true) }
 
     it 'should return status :ok' do
       phone_number_code = user.contact_information.phone_code
