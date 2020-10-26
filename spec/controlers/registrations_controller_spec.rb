@@ -5,8 +5,15 @@ describe Api::V1::RegistrationsController, type: :controller do
     context 'user' do
       context 'with valid params' do
         let(:pas) { 'example_password' }
-        let(:passwords) { { password: pas, password_confirmation: pas } }
-        let(:user_params) { FactoryBot.attributes_for(:user).merge(passwords) }
+
+        let(:user_params) { { email: 'email@example.com',
+                              nationality: ISO3166::Country.all_translated('EN').sample,
+                              country: ISO3166::Country.all_translated('EN').sample,
+                              password: pas,
+                              password_confirmation: pas,
+                              aml_rules: true,
+                              agree_with_terms: true,
+                              over_18: true } }
 
         it "should be created user" do
           @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -19,6 +26,9 @@ describe Api::V1::RegistrationsController, type: :controller do
           @request.env["devise.mapping"] = Devise.mappings[:user]
 
           pattern = {
+            agree_with_terms: ["is not included in the list"],
+            aml_rules: ["is not included in the list"],
+            over_18: ["is not included in the list"],
             email: ["can't be blank"],
             password: ["can't be blank"],
             nationality: ["can't be blank", "is not included in the list"],

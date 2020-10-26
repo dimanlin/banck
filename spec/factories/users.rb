@@ -25,14 +25,16 @@ FactoryBot.define do
 
   factory :user do
     email { generate :email }
-    aml_rules { true }
     nationality { ISO3166::Country.all_translated('EN').sample }
     document_number { generate :document_number }
     password { 'password' }
     password_confirmation { 'password' }
     country { ISO3166::Country.all_translated('EN').sample }
-    after(:create) do |user|
-      user.contact_information ||= create(:contact_information, user: user)
-    end
+    over_18 { true }
+    agree_with_terms { true }
+    aml_rules { true }
+    # after(:create) do |user|
+    #   user.contact_information ||= create(:contact_information, user: user)
+    # end
   end
 end

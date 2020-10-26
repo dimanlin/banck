@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :nationality, :country, presence: true
   validates :nationality, :country, inclusion: { in: ISO3166::Country.all_translated('EN') }
+  validates :agree_with_terms, :aml_rules, :over_18, inclusion: { in: [ true ] }
 
   has_one :contact_information
   has_one :document
