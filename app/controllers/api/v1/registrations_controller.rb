@@ -5,7 +5,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      render json: resource
+      render json: resource.attributes.slice('email')
     else
       render json: resource.errors.messages, status: :unprocessable_entity
     end
