@@ -1,5 +1,7 @@
 class Document < ApplicationRecord
-  enum document_type: ['Passport', 'Driving license']
+  enum document_type: { 'Passport' => 0,
+                       'Driving license' => 1,
+                       'ID' => 2 }
 
   belongs_to :user
 

@@ -1,8 +1,10 @@
 class Api::V1::DocumentsController < ActionController::API
   acts_as_token_authentication_handler_for User
 
-  def create
+  def create; end
 
+  def document_types
+    render json: Document.document_types
   end
 
   private

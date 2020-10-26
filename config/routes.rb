@@ -11,6 +11,11 @@ Rails.application.routes.draw do
       end
 
       resources :contact_informations, only: [:show1, :update, :create]
+      resources :documents, only: :create do
+        collection do
+          get :document_types
+        end
+      end
 
       resources :users do
         collection do
