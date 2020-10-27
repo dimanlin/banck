@@ -12,10 +12,28 @@ describe Api::V1::ContactInformationsController, type: :controller do
   end
 
   describe 'create' do
-    it 'should return list of countries' do
-      expect do
-        post :create, params: contact_information
-      end.to change { ContactInformation.count }.from(0).to(1)
+    context 'success' do
+      it 'should return list of countries' do
+        expect do
+          post :create, params: contact_information
+        end.to change { ContactInformation.count }.from(0).to(1)
+      end
+    end
+
+    context 'invalid' do
+      it 'should return list of countries' do
+        pattern = {
+            first_name: ["can't be blank"],
+            last_name: ["can't be blank"],
+            phone_number: ["can't be blank"],
+            dial_code: ["can't be blank"],
+            dob: ["can't be blank"]
+        }
+
+        post :create, params: {}
+        expect(response.body).to match_json_expression(pattern)
+        expect(response.code).to eq('422')
+      end
     end
   end
 

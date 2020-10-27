@@ -27,6 +27,8 @@ class Api::V1::ContactInformationsController < ApplicationController
     response json: current_user.contact_information
   end
 
+  
+
   private
 
   def create_contact_information_params
@@ -37,8 +39,4 @@ class Api::V1::ContactInformationsController < ApplicationController
                         :dob)
   end
 
-  def update_contact_information_params
-    params.permit(:email,
-                  :phone_number)
-  end
 end
