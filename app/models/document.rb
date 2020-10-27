@@ -5,7 +5,7 @@ class Document < ApplicationRecord
 
   belongs_to :user
 
-  validates :user_id, :country, :document_type, :issued_at, presence: true
+  validates :number, :expired_at, :user, :country, :document_type, :issued_at, presence: true
 
-  validates :country, exclusion: { in: ISO3166::Country.all_translated('EN') }
+  validates :country, inclusion: { in: ISO3166::Country.all_translated('EN') }
 end
