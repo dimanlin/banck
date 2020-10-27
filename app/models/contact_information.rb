@@ -12,6 +12,13 @@ class ContactInformation < ApplicationRecord
     end
   end
 
+  def confirm_phone_number(confirmation_number)
+    return true if phone_confirm_at
+    return false if confirmation_number.to_i != phone_code
+    update(phone_confirm_at: DateTime.current)
+  end
+
+
   private
 
   def generate_phone_number_confirmation_code

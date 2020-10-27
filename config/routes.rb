@@ -10,7 +10,11 @@ Rails.application.routes.draw do
         get "confirmation", to: "confirmations#show1"
       end
 
-      resources :contact_informations, only: [:show1, :update, :create]
+      resources :contact_informations, only: [:show, :create] do
+        collection do
+          post :confirm_phone_number
+        end
+      end
       resources :documents, only: :create do
         collection do
           get :document_types
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
       resources :users do
         collection do
           get :info
-          post :confirm_phone_number
+
         end
       end
 
