@@ -18,18 +18,6 @@ class ContactInformation < ApplicationRecord
     update(phone_confirm_at: DateTime.current)
   end
 
-  def update_email(email)
-    update(new_email: email, email_code: generate_code)
-  end
-
-  def confirm_email(code)
-    if code == email_code
-      update(email: new_email, email_code: nil)
-    else
-      false
-    end
-  end
-
   private
 
   def generate_phone_number_confirmation_code

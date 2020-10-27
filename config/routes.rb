@@ -13,8 +13,6 @@ Rails.application.routes.draw do
       resources :contact_informations, only: [:show, :create] do
         collection do
           post :confirm_phone_number
-          post :update_email
-          post :confirm_email
         end
       end
       resources :documents, only: :create do
@@ -26,7 +24,8 @@ Rails.application.routes.draw do
       resources :users do
         collection do
           get :info
-
+          post :update_email
+          post :confirm_email
         end
       end
 

@@ -11,35 +11,6 @@ describe Api::V1::ContactInformationsController, type: :controller do
     request.headers["X-User-Email"] = user.email
   end
 
-  describe 'update_email' do
-    let(:user) { FactoryBot.create(:user, with_contact_information: true) }
-    let(:new_email) { 'new_email@example.com' }
-
-    it 'should put new email in to field new_email' do
-      expect {
-        post :update_email, params: { email: new_email }
-      }.to change { user.contact_information.reload.new_email }.from(nil).to(new_email)
-    end
-
-    it 'should generate code for confirmation new email' do
-      post :update_email, params: { email: new_email }
-      puts user.contact_information.reload.email_code
-      expect(user.contact_information.reload.email_code).to be >= 100000
-    end
-  end
-
-  describe 'confirm_email' do
-    let(:new_email) { 'new_email@example.com' }
-    let(:contact_information) { FactoryBot.create(:contact_information,
-                                    new_email: new_email,
-                                    email_code: ContactInformation.new.send(:generate_code),
-                                    user_id: user.id) }
-    it 'should update email for user' do
-      post :confirm_email, params: { code: contact_information.email_code }
-      expect(user.contact_information.email).to eq(new_email)
-    end
-  end
-
   describe 'create' do
     it 'should return list of countries' do
       expect do

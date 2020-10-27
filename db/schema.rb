@@ -23,9 +23,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_142016) do
     t.string "dial_code"
     t.datetime "phone_confirm_at"
     t.integer "phone_code"
-    t.string "new_email"
     t.string "new_phone_number"
-    t.integer "email_code"
     t.integer "sms_code"
   end
 
@@ -64,6 +62,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_142016) do
     t.string "country"
     t.boolean "over_18"
     t.boolean "agree_with_terms"
+    t.string "new_email"
+    t.integer "email_code"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
