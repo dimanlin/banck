@@ -27,6 +27,19 @@ class Api::V1::ContactInformationsController < ApplicationController
     response json: current_user.contact_information
   end
 
+  def update_email
+    current_user.contact_information.update_email(params[:email])
+    render json: {}
+  end
+
+  def confirm_email
+    if current_user.contact_information.confirm_email(params[:code])
+      render json: {}
+    else
+      render json: {}, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def create_contact_information_params

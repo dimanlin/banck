@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_142016) do
     t.string "dial_code"
     t.datetime "phone_confirm_at"
     t.integer "phone_code"
-    t.string "next_email"
-    t.string "next_phone_number"
+    t.string "new_email"
+    t.string "new_phone_number"
     t.integer "email_code"
     t.integer "sms_code"
   end
