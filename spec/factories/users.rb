@@ -19,10 +19,6 @@ FactoryBot.define do
     "12345#{n}"
   end
 
-  sequence :document_number do |n|
-    "12345#{n}"
-  end
-
   factory :user do
     transient do
       with_contact_information { false }
@@ -30,7 +26,6 @@ FactoryBot.define do
 
     email { generate :email }
     nationality { ISO3166::Country.all_translated('EN').sample }
-    document_number { generate :document_number }
     password { 'password' }
     password_confirmation { 'password' }
     country { ISO3166::Country.all_translated('EN').sample }

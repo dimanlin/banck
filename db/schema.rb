@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_142016) do
+ActiveRecord::Schema.define(version: 2020_10_27_225325) do
 
   create_table "contact_informations", force: :cascade do |t|
     t.string "first_name"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_10_27_142016) do
   create_table "users", force: :cascade do |t|
     t.boolean "aml_rules"
     t.string "nationality"
-    t.string "document_number"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -62,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_10_27_142016) do
     t.string "country"
     t.boolean "over_18"
     t.boolean "agree_with_terms"
-    t.string "new_email"
     t.integer "email_code"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
