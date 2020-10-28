@@ -23,6 +23,10 @@ class Api::V1::ContactInformationsController < ApplicationController
     render json: _response_body, status: status
   end
 
+  def update_phone_number
+    if current_user.contact_information.update_phone_number(params[:phone_number])
+  end
+
   def show
     response json: current_user.contact_information
   end

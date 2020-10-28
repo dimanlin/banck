@@ -18,6 +18,11 @@ class ContactInformation < ApplicationRecord
     update(phone_confirm_at: DateTime.current)
   end
 
+  def update_phone_number
+    
+    render json: {}
+  end
+
   private
 
   def generate_phone_number_confirmation_code
